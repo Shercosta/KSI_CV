@@ -1,4 +1,27 @@
 <%- include("header"); -%>
 <h1>Easy CV</h1>
 
+<form action="/" method="post">
+  <label for="Nama" class="form-label">Nama : </label>
+  <input class="form-control" type="text" name="Nama" />
+  <label for="Foto" class="form-label">Foto : </label>
+  <input
+    type="file"
+    accept="image/png, image/jpeg"
+    name="Foto"
+    id="Foto"
+    class="form-control"
+  />
+  <label for="Tentang" class="form-label">Tentang : </label>
+  <textarea class="form-control" name="Tentang" id="Tentang"></textarea>
+  <label for="Email" class="form-label">Email : </label>
+  <input class="form-control" type="email" name="Email" id="Email" />
+  <label for="Nomor" class="form-label">Nomor Handphone : </label>
+  <input class="form-control" type="text" name="Nomor" id="Nomor" />
+  <label class="form-label" for="Skill">Skill : </label>
+  <input class="form-control" type="text" name="Skill" id="Skill" />
+
+  <button type="submit">Buatkan saya CV!</button>
+</form>
+
 <%- include("footer") -%>
