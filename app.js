@@ -5,6 +5,9 @@ const { log } = require("console");
 
 const app = express();
 
+var fs = require("fs");
+var formidable = require("formidable");
+
 app.set("views");
 app.set("view engine", "ejs");
 
@@ -25,9 +28,27 @@ app
       Skill: req.body.Skill,
     };
 
-    console.log(data);
+    const dataArray = [
+      data.Nama,
+      data.Tentang,
+      data.Email,
+      data.Nomor,
+      data.Skill,
+    ];
 
-    res.redirect("/browse");
+    // const foto = new formidable.IncomingForm
+
+    const dataJson = JSON.stringify(data);
+    // const dataContent = JSON.stringify(dataJson);
+
+    // console.log(data);
+
+    fs.appendFileSync("biodata.json", dataJson, "utf-8", (err) => {
+      if (err) throw err;
+      console.log("Done");
+    });
+
+    res.redirect("/");
   });
 
 // app.route("/browse").get((req, res) => {
