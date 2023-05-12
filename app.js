@@ -2,11 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const exp = require("constants");
 const { log } = require("console");
-
-const app = express();
-
+const ejs = require('ejs');
 var fs = require("fs");
 var formidable = require("formidable");
+
+const app = express();
+const PORT = 3000;
+
 
 app.set("views");
 app.set("view engine", "ejs");
@@ -54,7 +56,22 @@ app
 // app.route("/browse").get((req, res) => {
 //   res.render()
 // })
+const sampleResumeData = require("./views/templates/sample_resume_data.js");
 
-app.listen(3000, () => {
+app.get('/resume', (req, res) => {
+  const resumeTemplate = fs.readFileSync('views/templates/ats_resume.ejs', 'utf8');
+
+  // Define your resume data object
+  const resumeData = {
+    //DATA YANG DIAMBIL DARI FORM DISINI
+  };
+  log(sampleResumeData)
+
+  const renderedResume = ejs.render(resumeTemplate, sampleResumeData);
+  res.send(renderedResume);
+});
+
+
+app.listen(PORT, () => {
   console.log("Server is on http://localhost:3000");
 });

@@ -1,0 +1,120 @@
+/* Add your CSS styles here */
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin-top: 0;
+  font-size: 36px;
+}
+
+.header p {
+  margin: 0;
+  font-size: 18px;
+}
+
+.summary {
+  margin-bottom: 30px;
+}
+
+.summary h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.skills {
+  margin-bottom: 30px;
+}
+
+.skills h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.skills ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skills li {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.experience {
+  margin-bottom: 30px;
+}
+
+.experience h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.job {
+  margin-bottom: 20px;
+}
+
+.job h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.job p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.job ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.job li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.education {
+  margin-bottom: 30px;
+}
+
+.education h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.school {
+  margin-bottom: 20px;
+}
+
+.school h3 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.school p {
+  margin: 0;
+  font-size: 16px;
+}

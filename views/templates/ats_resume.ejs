@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= firstName %>'s Resume</title>
+    <!-- import style.css -->
+    <link href="/css/resume.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="container">
+      <div class="header">
+        <h1><%= firstName %> <%= lastName %></h1>
+        <p><%= address %></p>
+        <p><%= phone %></p>
+        <p><%= email %></p>
+      </div>
+      <div class="summary">
+        <h2>Summary</h2>
+        <p><%= summary %></p>
+      </div>
+      <div class="skills">
+        <h2>Skills</h2>
+        <ul>
+          <% skills.forEach(function(skill) { %>
+          <li><%= skill %></li>
+          <% }); %>
+        </ul>
+      </div>
+      <div class="experience">
+        <h2>Experience</h2>
+        <% experience.forEach(function(job) { %>
+        <div class="job">
+          <h3><%= job.title %></h3>
+          <p><%= job.company %>, <%= job.location %> | <%= job.startDate %> - <%= job.endDate %></p>
+          <ul>
+            <% job.responsibilities.forEach(function(responsibility) { %>
+            <li><%= responsibility %></li>
+            <% }); %>
+          </ul>
+        </div>
+        <% }); %>
+      </div>
+      <div class="education">
+        <h2>Education</h2>
+        <% education.forEach(function(school) { %>
+        <div class="school">
+          <h3><%= school.degree %> in <%= school.major %></h3>
+          <p><%= school.school %>, <%= school.location %> | <%= school.startDate %> - <%= school.endDate %></p>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+</html>
