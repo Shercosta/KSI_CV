@@ -33,9 +33,7 @@
           <h3><%= job.title %></h3>
           <p><%= job.company %>, <%= job.location %> | <%= job.startDate %> - <%= job.endDate %></p>
           <ul>
-            <% job.responsibilities.forEach(function(responsibility) { %>
-            <li><%= responsibility %></li>
-            <% }); %>
+            <li><%= job.responsibilities %></li>
           </ul>
         </div>
         <% }); %>
