@@ -66,66 +66,36 @@ app
     res.redirect("/skill");
   });
 
+
 app
-  .route("/skill")
-  .get((req, res) => {
-    res.render("skill");
-  })
+  .route("/resume")
   .post((req, res) => {
-    let data = require("./biodata.json");
+    const resumeData = req.body;
+    //FIXME: resumeData is empty
+    log(req.body)
+    fs.writeFileSync("resume_data.json", JSON.stringify(resumeData), "utf-8");
+    // send json 200 ok
+    res.status(200).json({ message: "Resume data received" });
+  })
+  .get((req, res) => {
+    const resumeTemplate = fs.readFileSync(
+      "views/templates/ats_resume.ejs",
+      "utf8"
+    );
 
-    // console.log(data);
+    // read resume data from json file
+    const resumeData = fs.readFileSync("resume_data.json", "utf8");
+    log(resumeData);
 
-    Skill.unshift(req.body.skill);
-
-    const select = req.body.skillOption;
-
-    if (select == "more") {
-      res.redirect("/skill");
-    } else if (select == "next") {
-      console.log(Skill);
-      data.skill = Skill;
-
-      console.log(data);
-
-      const dataJson = JSON.stringify(data);
-
-      fs.writeFileSync("biodata.json", dataJson, "utf-8", (err) => {
-        if (err) throw err;
-        console.log("Done");
-      });
-      res.redirect("/experience");
-    }
+    const renderedResume = ejs.render(resumeTemplate, resumeData);
+    res.send(renderedResume);
   });
 
 app
-  .route("/experience")
+  .route("/forms")
   .get((req, res) => {
-    res.render("experience");
+    res.render("forms");
   })
-  .post((req, res) => {
-    // untuk dapetin inputtan dari web experience.ejs nya
-    // experience.ejs nya di modif aja kalo bisa langsung terstruktur persis kaya data di sampel,
-    // pembentukan datanya baru sampe "skill", gw gkuat ini udh mau pagi
-  });
-
-const sampleResumeData = require("./views/templates/sample_resume_data.js");
-
-app.get("/resume", (req, res) => {
-  const resumeTemplate = fs.readFileSync(
-    "views/templates/ats_resume.ejs",
-    "utf8"
-  );
-
-  // Define your resume data object
-  const resumeData = {
-    //DATA YANG DIAMBIL DARI FORM DISINI
-  };
-  log(sampleResumeData);
-
-  const renderedResume = ejs.render(resumeTemplate, sampleResumeData);
-  res.send(renderedResume);
-});
 
 app.listen(PORT, () => {
   console.log("Server is on http://localhost:3000");
