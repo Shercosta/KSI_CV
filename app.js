@@ -16,7 +16,8 @@ app.use(express.static("public"));
 app
   .route("/")
   .get((req, res) => {
-    res.render("home");
+    // res.render("home");
+    res.redirect("/forms");
   })
   .post((req, res) => {
     // const userBiodata = new Biodata({
@@ -45,18 +46,17 @@ app
     res.redirect("/skill");
   });
 
-
 app
   .route("/resume")
   .post((req, res) => {
-    log(req.headers["content-type"])
-    log(req.body)
+    log(req.headers["content-type"]);
+    log(req.body);
     //write request to req.txt
     fs.writeFileSync("resume_data.json", JSON.stringify(req.body), "utf-8");
     // send json 200 ok
-    res.status(200).json({ 
+    res.status(200).json({
       message: "Resume data received",
-      body: req.body
+      body: req.body,
     });
   })
   .get((req, res) => {
@@ -68,18 +68,16 @@ app
     const resumeData = fs.readFileSync("resume_data.json", "utf8");
     // parse json to object
     const resumeDataObj = JSON.parse(resumeData);
-    
-    log(resumeDataObj)
+
+    log(resumeDataObj);
 
     const renderedResume = ejs.render(resumeTemplate, resumeDataObj);
     res.send(renderedResume);
   });
 
-app
-  .route("/forms")
-  .get((req, res) => {
-    res.render("forms");
-  })
+app.route("/forms").get((req, res) => {
+  res.render("forms");
+});
 
 app.listen(PORT, () => {
   console.log("Server is on http://localhost:3000");
