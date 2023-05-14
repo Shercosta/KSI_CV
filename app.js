@@ -66,9 +66,12 @@ app
     );
 
     const resumeData = fs.readFileSync("resume_data.json", "utf8");
-    log(resumeData);
+    // parse json to object
+    const resumeDataObj = JSON.parse(resumeData);
+    
+    log(resumeDataObj)
 
-    const renderedResume = ejs.render(resumeTemplate, resumeData);
+    const renderedResume = ejs.render(resumeTemplate, resumeDataObj);
     res.send(renderedResume);
   });
 

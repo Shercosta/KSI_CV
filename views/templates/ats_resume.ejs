@@ -28,7 +28,7 @@
       </div>
       <div class="experience">
         <h2>Experience</h2>
-        <% experience.forEach(function(job) { %>
+        <% experiences.forEach(function(job) { %>
         <div class="job">
           <h3><%= job.title %></h3>
           <p><%= job.company %>, <%= job.location %> | <%= job.startDate %> - <%= job.endDate %></p>
@@ -42,7 +42,7 @@
       </div>
       <div class="education">
         <h2>Education</h2>
-        <% education.forEach(function(school) { %>
+        <% educations.forEach(function(school) { %>
         <div class="school">
           <h3><%= school.degree %> in <%= school.major %></h3>
           <p><%= school.school %>, <%= school.location %> | <%= school.startDate %> - <%= school.endDate %></p>
