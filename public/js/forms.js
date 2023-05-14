@@ -1,3 +1,4 @@
+
 const form = document.getElementById('resume-form');
 const skillsContainer = document.getElementById('skills-container');
 const experienceContainer = document.getElementById('experience-container');
@@ -172,20 +173,18 @@ form.addEventListener('submit', (event) => {
       experiences,
       educations,
     };
-    console.log(resume)
-    console.log(JSON.stringify(resume))
-    stringedResume = JSON.stringify(resume)
+    
     // go to /resume with the resume object with post request
     fetch('/resume', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: stringedResume
+        body: JSON.stringify(resume),
     })
     .then((response) => response.json())
     .then((data) => {
-        // window.location.href = '/resume';
+        window.location.href = '/resume';
     }
     )
     .catch((error) => {
