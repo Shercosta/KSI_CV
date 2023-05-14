@@ -1,0 +1,15 @@
+<%- include("header"); -%>
+
+<form action="/skill" method="post">
+  <label class="form-label" for="skill">Skill</label>
+  <input class="form-control" type="text" id="skill" name="skill" />
+  <br />
+  <button type="submit" class="btn btn-info" name="skillOption" value="more">
+    Add More Skill
+  </button>
+  <button type="submit" class="btn btn-warning" name="skillOption" value="next">
+    Next >>
+  </button>
+</form>
+
+<%- include("footer") -%>
