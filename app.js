@@ -14,39 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app
-  .route("/")
-  .get((req, res) => {
-    // res.render("home");
-    res.redirect("/forms");
-  })
-  .post((req, res) => {
-    // const userBiodata = new Biodata({
-    //   firstName: req.body.firstName,
-    //   lastName: req.body.lastName,
-    //   address: req.body.address,
-    //   phone: req.body.phone,
-    //   email: req.body.email,
-    //   summary: req.body.summary,
-    // });
-
-    Biodata.firstName = req.body.firstName;
-    Biodata.lastName = req.body.lastName;
-    Biodata.address = req.body.address;
-    Biodata.phone = req.body.phone;
-    Biodata.email = req.body.email;
-    Biodata.summary = req.body.summary;
-
-    const dataJson = JSON.stringify(Biodata);
-
-    fs.writeFileSync("biodata.json", dataJson, "utf-8", (err) => {
-      if (err) throw err;
-      console.log("Done");
-    });
-
-    res.redirect("/skill");
-  });
-
-app
   .route("/resume")
   .post((req, res) => {
     log(req.headers["content-type"]);
@@ -75,7 +42,7 @@ app
     res.send(renderedResume);
   });
 
-app.route("/forms").get((req, res) => {
+app.route("/").get((req, res) => {
   res.render("forms");
 });
 
