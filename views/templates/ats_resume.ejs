@@ -2,9 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title> Resume</title>
+    <title><%= firstName %> Resume</title>
     <!-- import style.css -->
     <link href="/css/resume.css" rel="stylesheet" type="text/css">
+    <script src="/js/resume.js"></script>
 </head>
 <body>
     <div class="container">
@@ -47,6 +48,7 @@
         </div>
         <% }); %>
       </div>
+      <button id="print-btn">Print to PDF</button>
     </div>
   </body>
 </html>
