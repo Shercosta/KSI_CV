@@ -3,6 +3,7 @@ document.getElementById("print-btn").addEventListener("click", printResume);
 
 //function printResume
 function printResume() {
-    //call window.print() method
-    window.print();
+  //call window.print() method
+  document.getElementById("print-btn").hidden = "true";
+  window.print();
 }
